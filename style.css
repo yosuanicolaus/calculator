@@ -47,13 +47,13 @@ button {
     transition-duration: .3s;
 }
 
-.span-2 {
+.c, .e {
     grid-column: span 2;
     background-color: rgb(223, 223, 223);
     width: auto;
 }
 
-.span-2:hover {
+.c:hover, .e:hover {
     background-color: rgb(177, 177, 177);
 }
 
