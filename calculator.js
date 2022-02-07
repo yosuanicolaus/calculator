@@ -28,11 +28,42 @@ buttons.forEach((button) => {
                 disBeta.textContent = disBeta.textContent.slice(0, -1);
                 break;
             case 'c':
-                console.log('clearing...');
                 disBeta.textContent = '';
                 break;
             case 'e':
                 console.log('operating...');
+                convertInput();
+                console.table(values);
+                console.table(operation);
+
+                disMain.textContent = values.reduce((accumulator, current) => {
+                    
+                });
         }
     });
 });
+
+function convertInput() {
+    //initialize array
+    values = [], operation = [];
+    //convert disBeta into arrays- values and operation
+    let value = '';
+    for (let i = 0; i <= disBeta.textContent.length; i++) {
+        let isNumber = disBeta.textContent.charCodeAt(i) >= 48;
+        if (isNumber) {
+            value += disBeta.textContent[i];
+        } else {
+            values.push(Number(value));
+            value = '';
+            if (disBeta.textContent[i] == '+') {
+                operation.push('add');
+            } else if (disBeta.textContent[i] == '-') {
+                operation.push('subtract');
+            } else if (disBeta.textContent[i] == '*') {
+                operation.push('multiply');
+            } else if (disBeta.textContent[i] == '/') {
+                operation.push('divide');
+            }
+        }
+    }
+}
