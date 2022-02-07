@@ -36,7 +36,8 @@ html, body {
     margin: 0 1rem;
 }
 
-.disMain  {font-size: 2.5rem;}
+#disBeta {color: rgb(90, 90, 90);}
+#disMain {font-size: 2.5rem;}
 
 
 button {
