@@ -9,11 +9,10 @@ const disBeta = document.getElementById('disBeta');
 const disMain = document.getElementById('disMain');
 const buttons = document.querySelectorAll('button');
 
-disBeta.textContent += 1000;
-disMain.textContent += 20;
-
-// button.addEventListener('click', myFunc(button.id));
 
 buttons.forEach((button) => {
-    button.addEventListener('click', () => console.log(button.id));
+    button.addEventListener('click', () => {
+        //populate display (beta)
+        disBeta.textContent += button.id;
+    });
 });
