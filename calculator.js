@@ -9,10 +9,30 @@ const disBeta = document.getElementById('disBeta');
 const disMain = document.getElementById('disMain');
 const buttons = document.querySelectorAll('button');
 
+let a = 0, b = 0, values = [], operation = [];
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         //populate display (beta)
-        disBeta.textContent += button.id;
+        let validNumber = disBeta.textContent.charCodeAt(disBeta.textContent.length-1) >= 48;
+        switch (button.className) {
+            case 'number':
+                disBeta.textContent += button.id;
+                break;
+            case 'operator':
+                if ((disBeta.textContent.length != 0) && validNumber) {
+                    disBeta.textContent += button.id;
+                }
+                break;
+            case 'd':
+                disBeta.textContent = disBeta.textContent.slice(0, -1);
+                break;
+            case 'c':
+                console.log('clearing...');
+                disBeta.textContent = '';
+                break;
+            case 'e':
+                console.log('operating...');
+        }
     });
 });
