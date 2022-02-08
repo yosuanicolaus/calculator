@@ -14,6 +14,11 @@ let a = 0, b = 0, values = [], operation = [];
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         //populate display (beta)
+        if (disMain.textContent.length > 0) {
+            disBeta.textContent = disMain.textContent;
+            disMain.textContent = '';
+        }
+
         let validNumber = disBeta.textContent.charCodeAt(disBeta.textContent.length-1) >= 48;
         switch (button.className) {
             case 'number':
@@ -29,15 +34,12 @@ buttons.forEach((button) => {
                 break;
             case 'c':
                 disBeta.textContent = '';
+                disMain.textContent = '';
                 break;
             case 'e':
                 convertInput();
-                console.table(values);
-                console.table(operation);
-
-                disMain.textContent = values.reduce((accumulator, current) => {
-                    return operate(operation.shift(), accumulator, current);
-                });
+                let result = values.reduce((a, b) => operate(operation.shift(), a, b));
+                disMain.textContent = Math.round(result * 100)/100;
         }
     });
 });
