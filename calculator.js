@@ -31,13 +31,12 @@ buttons.forEach((button) => {
                 disBeta.textContent = '';
                 break;
             case 'e':
-                console.log('operating...');
                 convertInput();
                 console.table(values);
                 console.table(operation);
 
                 disMain.textContent = values.reduce((accumulator, current) => {
-                    
+                    return operate(operation.shift(), accumulator, current);
                 });
         }
     });
@@ -50,19 +49,20 @@ function convertInput() {
     let value = '';
     for (let i = 0; i <= disBeta.textContent.length; i++) {
         let isNumber = disBeta.textContent.charCodeAt(i) >= 48;
-        if (isNumber) {
+        let isDot = disBeta.textContent.charCodeAt(i) == 46;
+        if (isNumber || isDot) {
             value += disBeta.textContent[i];
         } else {
             values.push(Number(value));
             value = '';
             if (disBeta.textContent[i] == '+') {
-                operation.push('add');
+                operation.push(add);
             } else if (disBeta.textContent[i] == '-') {
-                operation.push('subtract');
+                operation.push(subtract);
             } else if (disBeta.textContent[i] == '*') {
-                operation.push('multiply');
+                operation.push(multiply);
             } else if (disBeta.textContent[i] == '/') {
-                operation.push('divide');
+                operation.push(divide);
             }
         }
     }
